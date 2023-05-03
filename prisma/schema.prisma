@@ -19,6 +19,7 @@ model Org {
   address  String
   whatsapp String
   city     String
+  pets     Pet[]
 
   @@map("orgs")
 }
@@ -56,6 +57,8 @@ model Pet {
   size             Size
   lvl_independence Independece
   type             Type
+  org              Org         @relation(fields: [org_id], references: [id])
+  org_id           String
 
   @@map("pets")
 }
