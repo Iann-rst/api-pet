@@ -22,3 +22,40 @@ model Org {
 
   @@map("orgs")
 }
+
+// Enums para a tabela de pets
+
+enum Age {
+  cub
+  adolescent
+  elderly
+}
+
+enum Size {
+  small
+  medium
+  big
+}
+
+enum Independece {
+  low
+  medium
+  high
+}
+
+enum Type {
+  cat
+  dog
+}
+
+model Pet {
+  id               String      @id @default(uuid())
+  name             String
+  description      String
+  age              Age
+  size             Size
+  lvl_independence Independece
+  type             Type
+
+  @@map("pets")
+}
