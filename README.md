@@ -25,3 +25,27 @@
 Segue o link para o layout da aplicação que utilizaria essa API.
 
 > [layout da aplicação](<https://www.figma.com/file/sIjvM84tYyv0NyJzdyvEbJ/Find-A-Friend-(APP)?node-id=1-2&t=pJli3ch6IUoM44mo-0>)
+
+## Propriedades dos registros
+
+### ORG
+
+- id;
+- email;
+- password;
+- name;
+- CEP;
+- address;
+- whatsapp;
+- city;
+
+### Pets
+
+- id;
+- name;
+- description;
+- age (cub, adolescente, elderly);
+- size (small, medium, big);
+- lvl_independence (low, medium, high);
+- type (cat, dog);
+- org_id;
