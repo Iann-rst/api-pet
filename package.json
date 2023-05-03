@@ -4,7 +4,8 @@
   "description": "API para a adoção de animais",
   "main": "index.js",
   "scripts": {
-    "start:dev": "tsx watch src/server.ts"
+    "start:dev": "tsx watch src/server.ts",
+    "test": "vitest run --reporter verbose"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,9 @@
     "eslint": "8.39.0",
     "prisma": "4.13.0",
     "tsx": "3.12.7",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "vite-tsconfig-paths": "4.2.0",
+    "vitest": "0.31.0"
   },
   "dependencies": {
     "@prisma/client": "4.13.0",
