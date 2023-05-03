@@ -1,0 +1,15 @@
+# docker run --name api-pet -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker
+# -e POSTGRESQL_DATABASE=apipet -p 5432:5432 bitnami/postgresql
+
+version: "3"
+
+services:
+  api-pet:
+    image: bitnami/postgresql
+    container_name: api-pet
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=apipet
