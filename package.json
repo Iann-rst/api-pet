@@ -4,7 +4,7 @@
   "description": "API para a adoção de animais",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "@rocketseat/eslint-config": "1.2.0",
     "@types/node": "18.16.3",
     "eslint": "8.39.0",
+    "tsx": "3.12.7",
     "typescript": "5.0.4"
   },
   "dependencies": {
