@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
-    "test": "vitest run --reporter verbose"
+    "test": "vitest run --reporter verbose",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,8 @@
     "@rocketseat/eslint-config": "1.2.0",
     "@types/bcryptjs": "2.4.2",
     "@types/node": "18.16.3",
+    "@vitest/coverage-c8": "0.31.0",
+    "@vitest/ui": "0.31.0",
     "eslint": "8.39.0",
     "prisma": "4.13.0",
     "tsx": "3.12.7",
