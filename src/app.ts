@@ -4,6 +4,7 @@ import fastify from 'fastify'
 import { ZodError } from 'zod'
 import { env } from './env'
 import { orgRoutes } from './http/controllers/org/routes'
+import { petRoutes } from './http/controllers/pet/routes'
 
 export const app = fastify()
 
@@ -19,6 +20,10 @@ app.register(fastifyCookie)
 
 app.register(orgRoutes, {
   prefix: 'org',
+})
+
+app.register(petRoutes, {
+  prefix: 'pet',
 })
 
 app.setErrorHandler((error, _, reply) => {
