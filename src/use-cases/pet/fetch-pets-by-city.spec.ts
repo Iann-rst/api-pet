@@ -76,4 +76,46 @@ describe('Fetch Pets By City', () => {
 
     expect(pets).toHaveLength(2)
   })
+
+  it('should be able to filter pets', async () => {
+    const org = await inMemoryOrgRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@email.com',
+      password: '123456',
+      cep: '47802-028',
+      address: 'rua a',
+      whatsapp: '999999999',
+      city: 'Barreiras',
+    })
+
+    await inMemoryPetRepository.create({
+      name: 'Magali',
+      description: 'Gato mestiço',
+      age: 'cub',
+      lvl_independence: 'low',
+      size: 'small',
+      type: 'cat',
+      org_id: org.id,
+    })
+
+    await inMemoryPetRepository.create({
+      name: 'Cascão',
+      description: 'Gato frajola',
+      age: 'adolescent',
+      lvl_independence: 'low',
+      size: 'big',
+      type: 'cat',
+      org_id: org.id,
+    })
+
+    const { pets } = await sut.execute({
+      city: org.city,
+      query: {
+        age: 'adolescent',
+      },
+    })
+
+    expect(pets).toHaveLength(1)
+    expect(pets).toEqual([expect.objectContaining({ name: 'Cascão' })])
+  })
 })
