@@ -26,7 +26,13 @@ export class InMemoryPetRepository implements PetRepository {
   }
 
   async findManyByCity(city: string): Promise<ResponsePet[]> {
-    throw new Error('Method not implemented.')
+    const orgs = await this.orgRepository.findManyByCity(city)
+
+    const petsByOrgsInCity = this.pets.filter((pet) => {
+      return orgs.find((org) => org.id === pet.org_id)
+    })
+
+    return petsByOrgsInCity
   }
 
   async findById(id: string): Promise<ResponsePet | null> {
