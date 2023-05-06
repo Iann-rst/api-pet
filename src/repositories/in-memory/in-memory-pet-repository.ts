@@ -28,7 +28,7 @@ export class InMemoryPetRepository implements PetRepository {
 
   async findManyByCity(
     city: string,
-    { query }: ParamsPet,
+    params?: ParamsPet,
   ): Promise<ResponsePet[]> {
     const orgs = await this.orgRepository.findManyByCity(city)
 
@@ -36,16 +36,16 @@ export class InMemoryPetRepository implements PetRepository {
       return orgs.find((org) => org.id === pet.org_id)
     })
 
-    if (!query) {
+    if (!params) {
       return petsByOrgsInCity
     }
     const petFiltered = petsByOrgsInCity.filter(
       (pet) =>
-        (!query.age || pet.age === query?.age) &&
-        (!query.lvl_independence ||
-          pet.lvl_independence === query?.lvl_independence) &&
-        (!query.size || pet.size === query?.size) &&
-        (!query.type || pet.type === query?.type),
+        (!params.age || pet.age === params?.age) &&
+        (!params.lvl_independence ||
+          pet.lvl_independence === params?.lvl_independence) &&
+        (!params.size || pet.size === params?.size) &&
+        (!params.type || pet.type === params?.type),
     )
 
     return petFiltered
