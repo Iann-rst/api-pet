@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import { ParamsPet } from '@/utils/params'
 import { CreatePetDTO } from '../dto/pet/create-pet-dto'
 import { ResponsePet } from '../dto/pet/pet'
 import { PetRepository } from '../pet-repository'
@@ -12,7 +13,10 @@ export class PrismaPetRepository implements PetRepository {
     return pet
   }
 
-  async findManyByCity(city: string): Promise<ResponsePet[]> {
+  async findManyByCity(
+    city: string,
+    query?: ParamsPet,
+  ): Promise<ResponsePet[]> {
     const pets = await prisma.pet.findMany({
       where: {
         org: {
@@ -21,6 +25,7 @@ export class PrismaPetRepository implements PetRepository {
             mode: 'insensitive',
           },
         },
+        ...query,
       },
     })
 
