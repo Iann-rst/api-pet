@@ -30,6 +30,20 @@ export class InMemoryPetRepository implements PetRepository {
   }
 
   async findById(id: string): Promise<ResponsePet | null> {
-    throw new Error('Method not implemented.')
+    const pet = this.pets.find((pet) => pet.id === id)
+
+    if (!pet) {
+      return null
+    }
+
+    const org = await this.orgRepository.findById(pet.org_id)
+
+    if (!org) {
+      return null
+    }
+
+    pet.Org = org
+
+    return pet
   }
 }
