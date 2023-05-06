@@ -30,7 +30,17 @@ export class PrismaPetRepository implements PetRepository {
         id,
       },
       include: {
-        org: true,
+        org: {
+          select: {
+            id: true,
+            email: true,
+            address: true,
+            cep: true,
+            name: true,
+            whatsapp: true,
+            city: true,
+          },
+        },
       },
     })
 
