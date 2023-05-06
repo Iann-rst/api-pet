@@ -42,4 +42,10 @@ export class InMemoryOrgRepository implements OrgRepository {
 
     return org
   }
+
+  async findManyByCity(city: string): Promise<Org[]> {
+    const orgs = this.orgs.filter((org) => org.city === city)
+
+    return orgs
+  }
 }
