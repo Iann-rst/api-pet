@@ -1,5 +1,29 @@
 # API para a adoção de animais, a FindAFriend API
 
+## Propriedades dos registros
+
+### ORG
+
+- id;
+- email;
+- password;
+- name;
+- CEP;
+- address;
+- whatsapp;
+- city;
+
+### Pets
+
+- id;
+- name;
+- description;
+- age (cub, adolescente, elderly);
+- size (small, medium, big);
+- lvl_independence (low, medium, high);
+- type (cat, dog);
+- org_id;
+
 ## Regras da aplicação
 
 - [x] Deve ser possível cadastrar um pet;
@@ -26,26 +50,25 @@ Segue o link para o layout da aplicação que utilizaria essa API.
 
 > [layout da aplicação](<https://www.figma.com/file/sIjvM84tYyv0NyJzdyvEbJ/Find-A-Friend-(APP)?node-id=1-2&t=pJli3ch6IUoM44mo-0>)
 
-## Propriedades dos registros
+## Autenticação JWT e Refresh Token
 
-### ORG
+- [x] JWT - Json Web Token;
+- [x] Fastify/jwt;
+- [x] Cookies;
+- [x] Estratégia de refresh de token;
+- [x] Implementação do refresh token;
 
-- id;
-- email;
-- password;
-- name;
-- CEP;
-- address;
-- whatsapp;
-- city;
+## Design Patterns & Testes
 
-### Pets
+- [x] Repository Pattern;
+- [x] Vitest;
+- [x] In-Memory Test Database;
+- [x] Coverage de testes;
+- [x] UI do test;
+- [ ] Factory Pattern;
 
-- id;
-- name;
-- description;
-- age (cub, adolescente, elderly);
-- size (small, medium, big);
-- lvl_independence (low, medium, high);
-- type (cat, dog);
-- org_id;
+## Testes E2E
+
+- [ ] Test Environment do Prisma;
+- [ ] Teste E2E de rotas de org;
+- [ ] Teste E2E de rotas de pet;
