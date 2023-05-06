@@ -1,3 +1,4 @@
+import { ParamsPet } from '@/utils/params'
 import { randomUUID } from 'node:crypto'
 import { CreatePetDTO } from '../dto/pet/create-pet-dto'
 import { ResponsePet } from '../dto/pet/pet'
@@ -25,14 +26,29 @@ export class InMemoryPetRepository implements PetRepository {
     return pet
   }
 
-  async findManyByCity(city: string): Promise<ResponsePet[]> {
+  async findManyByCity(
+    city: string,
+    { query }: ParamsPet,
+  ): Promise<ResponsePet[]> {
     const orgs = await this.orgRepository.findManyByCity(city)
 
     const petsByOrgsInCity = this.pets.filter((pet) => {
       return orgs.find((org) => org.id === pet.org_id)
     })
 
-    return petsByOrgsInCity
+    if (!query) {
+      return petsByOrgsInCity
+    }
+    const petFiltered = petsByOrgsInCity.filter(
+      (pet) =>
+        (!query.age || pet.age === query?.age) &&
+        (!query.lvl_independence ||
+          pet.lvl_independence === query?.lvl_independence) &&
+        (!query.size || pet.size === query?.size) &&
+        (!query.type || pet.type === query?.type),
+    )
+
+    return petFiltered
   }
 
   async findById(id: string): Promise<ResponsePet | null> {
